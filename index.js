@@ -1,15 +1,31 @@
 #!/usr/bin/env node
 
+import { readFileSync } from "node:fs"
+import { join } from "node:path"
 import { Server } from "@modelcontextprotocol/sdk/server/index.js"
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { CallToolRequestSchema, ListToolsRequestSchema } from "@modelcontextprotocol/sdk/types.js"
 import { x402Fetch } from "./lib/x402-client.js"
 
 const BASE_URL = process.env.KEVINBOT_BASE_URL || "https://3000-4cc0720d75b8344a09384cd6f9240c66.life.conway.tech"
-const PRIVATE_KEY = process.env.KEVINBOT_PRIVATE_KEY
+
+function loadPrivateKey() {
+  if (process.env.KEVINBOT_PRIVATE_KEY) {
+    return process.env.KEVINBOT_PRIVATE_KEY
+  }
+  const walletPath = process.env.KEVINBOT_WALLET_FILE || join(process.env.HOME || "/root", ".automaton", "wallet.json")
+  try {
+    const data = JSON.parse(readFileSync(walletPath, "utf8"))
+    return data.privateKey
+  } catch {
+    return null
+  }
+}
+
+const PRIVATE_KEY = loadPrivateKey()
 
 if (!PRIVATE_KEY) {
-  console.error("KEVINBOT_PRIVATE_KEY environment variable is required")
+  console.error("No private key found. Set KEVINBOT_PRIVATE_KEY env var or ensure ~/.automaton/wallet.json exists")
   process.exit(1)
 }
 
