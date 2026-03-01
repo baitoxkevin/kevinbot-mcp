@@ -1,16 +1,25 @@
 {
   "name": "@baitoxkevin/kevinbot-mcp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "description": "MCP server for KevinBot x402 API - web search, crawl, monitor, and 9 more paid tools via micropayments",
   "bin": {
-    "kevinbot-mcp": "./index.js"
+    "kevinbot-mcp": "index.js"
   },
-  "keywords": ["mcp", "x402", "web-search", "crawl", "api", "micropayments", "claude", "ai-tools"],
+  "keywords": [
+    "mcp",
+    "x402",
+    "web-search",
+    "crawl",
+    "api",
+    "micropayments",
+    "claude",
+    "ai-tools"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/baitoxkevin/kevinbot-mcp.git"
+    "url": "git+https://github.com/baitoxkevin/kevinbot-mcp.git"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
