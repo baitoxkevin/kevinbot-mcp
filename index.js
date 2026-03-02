@@ -183,10 +183,68 @@ const TOOLS = [
     },
     endpoint: "/api/extract-data",
   },
+  {
+    name: "nfi_status",
+    description: "NostalgiaForInfinityX7 live trading bot status. Returns all open positions with real-time P&L, signal modes, leverage, and duration. Powered by a 77% win-rate algorithmic trading strategy.",
+    inputSchema: { type: "object", properties: {} },
+    endpoint: "/api/nfi/status",
+  },
+  {
+    name: "nfi_profit",
+    description: "NFI trading bot profit summary. Returns win rate, profit factor, drawdown, best/worst pairs, and daily P&L breakdown.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        days: { type: "number", description: "Number of days for daily breakdown (1-30, default 7)" },
+      },
+    },
+    endpoint: "/api/nfi/profit",
+  },
+  {
+    name: "nfi_performance",
+    description: "NFI per-pair performance ranking. Returns all traded pairs sorted by profitability with trade counts.",
+    inputSchema: { type: "object", properties: {} },
+    endpoint: "/api/nfi/performance",
+  },
+  {
+    name: "nfi_signals",
+    description: "NFI latest entry/exit signals across all monitored pairs. Returns active trading signals with mode classification (short_rapid, long_quick, etc.).",
+    inputSchema: { type: "object", properties: {} },
+    endpoint: "/api/nfi/signals",
+  },
+  {
+    name: "nfi_pair_rank",
+    description: "NFI pair rankings based on historical performance. Returns top performers, worst performers, and blacklisted pairs.",
+    inputSchema: { type: "object", properties: {} },
+    endpoint: "/api/nfi/pair-rank",
+  },
+  {
+    name: "nfi_market_regime",
+    description: "NFI market regime detection. Analyzes the bot's current position bias to determine bullish/bearish/neutral market conditions with confidence score.",
+    inputSchema: { type: "object", properties: {} },
+    endpoint: "/api/nfi/market-regime",
+  },
+  {
+    name: "nfi_trade_history",
+    description: "NFI recent closed trades with full entry/exit details including signal mode, exit reason, profit, leverage, and duration.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        limit: { type: "number", description: "Number of trades to return (1-200, default 50)" },
+      },
+    },
+    endpoint: "/api/nfi/trade-history",
+  },
+  {
+    name: "nfi_strategy_stats",
+    description: "NFI comprehensive strategy statistics. Returns signal mode breakdown, exit reason analysis, risk metrics (drawdown, profit factor), and bot configuration.",
+    inputSchema: { type: "object", properties: {} },
+    endpoint: "/api/nfi/strategy-stats",
+  },
 ]
 
 const server = new Server(
-  { name: "kevinbot-mcp", version: "1.0.0" },
+  { name: "kevinbot-mcp", version: "2.0.0" },
   { capabilities: { tools: {} } },
 )
 

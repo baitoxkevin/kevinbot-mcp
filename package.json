@@ -2,10 +2,15 @@
   "name": "@baitoxkevin/kevinbot-mcp",
   "version": "1.0.3",
   "type": "module",
-  "description": "MCP server for KevinBot x402 API - web search, crawl, monitor, and 9 more paid tools via micropayments",
+  "description": "MCP server for KevinBot x402 API - web search, crawl, SEO analysis, code review, trading signals, and 15 more AI tools via USDC micropayments on Base",
   "bin": {
     "kevinbot-mcp": "index.js"
   },
+  "files": [
+    "index.js",
+    "lib/",
+    "README.md"
+  ],
   "keywords": [
     "mcp",
     "x402",
@@ -14,15 +19,28 @@
     "api",
     "micropayments",
     "claude",
-    "ai-tools"
+    "ai-tools",
+    "trading-signals",
+    "crypto",
+    "nfi",
+    "model-context-protocol",
+    "usdc",
+    "base-chain",
+    "seo",
+    "code-review"
   ],
+  "author": "baitoxkevin",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/baitoxkevin/kevinbot-mcp.git"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+  "homepage": "https://github.com/baitoxkevin/kevinbot-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/baitoxkevin/kevinbot-mcp/issues"
+  },
+  "engines": {
+    "node": ">=18"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.12.0",
